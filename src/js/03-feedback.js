@@ -8,7 +8,7 @@ const STORAGE_KEY = 'feedback-form-state';
 formEl.addEventListener('input', throttle(onInputToLocalStorage, 500));
 formEl.addEventListener('submit', onSubmit);
 
-const formData = {};
+let formData = {};
 
 updateFormData();
 
@@ -23,17 +23,14 @@ function onSubmit(e) {
         console.log(formData);
         localStorage.removeItem(STORAGE_KEY);
         e.currentTarget.reset();
+        formData = {};
     } else {
         alert("Please fill out all form fields before submitting!")
     }
-
-
 }
 
 function updateFormData() {
-
     let userFeedback = load(STORAGE_KEY);
-
     if (userFeedback) {
         const formData = userFeedback;
         email.value = formData.email || '';
