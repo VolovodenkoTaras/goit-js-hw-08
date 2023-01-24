@@ -32,7 +32,7 @@ function onSubmit(e) {
 function updateFormData() {
     let userFeedback = load(STORAGE_KEY);
     if (userFeedback) {
-        const formData = userFeedback;
+        formData = userFeedback;
         email.value = formData.email || '';
         message.value = formData.message || '';
     }
