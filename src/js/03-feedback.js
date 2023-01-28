@@ -49,7 +49,7 @@ function onInputToLocalStorage(e) {
 }
 
 function onSubmit(e) {
-    e.preventDefault();                       //Сабмит формы перезагружает страницу, поэтому отменяtv действие по умолчанию методом preventDefault()
+    e.preventDefault();                       //Сабмит формы перезагружает страницу, поэтому отменяем действие по умолчанию методом preventDefault()
     if (email.value && message.value) {
         console.log(formData);
         localStorage.removeItem(STORAGE_KEY); //Метод removeItem(key) удаляет из хранилища уже существующую запись с ключом key.

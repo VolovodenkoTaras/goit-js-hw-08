@@ -23,14 +23,11 @@ JSON.parse() -получает (парсит) из JSON валидное JavaScr
 function load(key) {
     try {
         return (!localStorage.getItem(key))
-            ? ""
+            ? undefined
             : JSON.parse(localStorage.getItem(key));
     } catch (error) {
         console.error("Get state error: ", error.name, error.message);
     }
 };
 
-export {
-    save,
-    load,
-};
+export { save, load };
