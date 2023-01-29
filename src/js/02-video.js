@@ -35,7 +35,6 @@ function onPlay(data) {
     save(CURRENT_TIME, data.seconds)
 }
 
-let seconds = load(CURRENT_TIME)
-if (seconds) {
-    player.setCurrentTime(seconds);
-};
+let seconds = load(CURRENT_TIME) || 0
+
+player.setCurrentTime(seconds);
