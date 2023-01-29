@@ -38,4 +38,4 @@ function onPlay(data) {
 let seconds = load(CURRENT_TIME)
 if (seconds) {
     player.setCurrentTime(seconds);
-}
+};

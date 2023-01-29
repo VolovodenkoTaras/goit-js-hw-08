@@ -6,7 +6,8 @@ restart.addEventListener('click', onRestart);
 
 const X_KEY = 'PlayerX';
 const O_KEY = 'PlayerO';
-let player = 'X';
+const KEY_PLAYER = 'currentPlayer';
+let player = localStorage.getItem(KEY_PLAYER) || 'X';
 let stepX = JSON.parse(localStorage.getItem(X_KEY)) || [];
 let stepO = JSON.parse(localStorage.getItem(O_KEY)) || [];
 const win = [
@@ -69,6 +70,7 @@ function onClick(evt) {
                 return;
             }
             player = player === "X" ? "O" : "X";
+            localStorage.setItem(KEY_PLAYER, player);
         })
     } else {
         alert('Change!!!')
