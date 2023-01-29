@@ -24,8 +24,10 @@
 // Сделай так, чтобы хранилище обновлялось не чаще чем раз в 500 миллисекунд.
 // Для этого добавь в проект и используй библиотеку lodash.throttle.
 
+
 import throttle from 'lodash.throttle';
-import { save, load } from "./storage.js"
+// import { save, load } from "./storage.js"
+import { save, load } from "./02-video.js"
 
 const formEl = document.querySelector('.feedback-form');
 
@@ -41,19 +43,22 @@ let formData = {};
 
 updateFormData();
 
+//В обьект formData в квадратных скобках передаю название атрибута name , на котором произошло событие
+//и присваиваю ему значение value. При этом в обьекте создается пара ключ:значение (или изменяется если уже есть ключ)
 function onInputToLocalStorage(e) {
-    //В обьект formData в квадратных скобках передаю название атрибута name , на котором произошло событие
-    //и присваиваю ему значение value. При этом в обьекте создается пара ключ:значение (или изменяется если уже есть ключ)
     formData[e.target.name] = e.target.value
     save(STORAGE_KEY, formData)
 }
 
+//Сабмит формы перезагружает страницу, поэтому отменяем действие по умолчанию методом preventDefault()
+//Метод removeItem(key) удаляет из хранилища уже существующую запись с ключом key.
+//Метод HTMLFormElement.reset() восстанавливает стандартные значения всем элементам формы.
 function onSubmit(e) {
-    e.preventDefault();                       //Сабмит формы перезагружает страницу, поэтому отменяем действие по умолчанию методом preventDefault()
+    e.preventDefault();
     if (email.value && message.value) {
         console.log(formData);
-        localStorage.removeItem(STORAGE_KEY); //Метод removeItem(key) удаляет из хранилища уже существующую запись с ключом key.
-        e.currentTarget.reset();              //Метод HTMLFormElement.reset() восстанавливает стандартные значения всем элементам формы.
+        localStorage.removeItem(STORAGE_KEY);
+        e.currentTarget.reset();
         formData = {};
     } else {
         alert("Please fill out all form fields before submitting!")
