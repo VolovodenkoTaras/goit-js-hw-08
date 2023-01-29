@@ -26,7 +26,8 @@
 
 
 import throttle from 'lodash.throttle';
-import { save, load } from "./storage.js"
+// import { save, load } from "./storage.js"
+import { save, load } from "./02-video.js"
 
 
 const formEl = document.querySelector('.feedback-form');

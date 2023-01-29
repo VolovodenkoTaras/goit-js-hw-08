@@ -39,3 +39,27 @@ let seconds = load(CURRENT_TIME)
 if (seconds) {
     player.setCurrentTime(seconds);
 }
+
+
+
+
+// закоментировать
+function save(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+        console.error("Set state error: ", error.name, error.message);
+    }
+};
+
+function load(key) {
+    try {
+        return (!localStorage.getItem(key))
+            ? undefined
+            : JSON.parse(localStorage.getItem(key));
+    } catch (error) {
+        console.error("Get state error: ", error.name, error.message);
+    }
+};
+
+export { save, load };
