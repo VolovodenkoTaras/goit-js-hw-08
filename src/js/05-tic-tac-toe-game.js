@@ -21,6 +21,8 @@ const win = [
     [3, 5, 7]
 ];
 
+// const KEY_MOVE = 'moves';
+// let moves = JSON.parse(localStorage.getItem(KEY_MOVE)) || 0;
 
 function startGame() {
     [...content.children].forEach(item => {
@@ -64,6 +66,7 @@ function onClick(evt) {
         }
 
         setTimeout(() => {
+
             if (result) {
                 alert(`Winner ${player}`);
                 onRestart();
@@ -71,6 +74,17 @@ function onClick(evt) {
             }
             player = player === "X" ? "O" : "X";
             localStorage.setItem(KEY_PLAYER, player);
+
+            // moves += 1
+            // localStorage.setItem(KEY_MOVE, moves);
+
+            if (stepX.length + stepO.length === 9) {
+                alert(`Ничья !`);
+                onRestart();
+                return;
+            }
+
+
         })
     } else {
         alert('Change!!!')
@@ -82,8 +96,7 @@ function onRestart() {
     player = "X";
     stepX = [];
     stepO = [];
+    moves = 0;
     localStorage.clear()
     content.innerHTML = createMarkup();
 }
-
-
